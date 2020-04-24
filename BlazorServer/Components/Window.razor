@@ -1,0 +1,42 @@
+﻿<div>
+	<div style="width: @Width px" class="window">
+		<div class="title-bar">
+			<div class="title-bar-text">@Title</div>
+			<div class="title-bar-controls">
+				<button aria-label="Minimize" />
+				<button aria-label="Maximize" />
+				<button aria-label="Close" />
+			</div>
+		</div>
+		<div class="window-body">
+			<p style="text-align: center">@Content</p>
+			<div class="field-row" style="text-align: center">
+				@Buttons
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+
+	[Parameter]
+	public int Width { get; set; }
+
+	[Parameter]
+	public string Title { get; set; }
+
+
+	private static readonly RenderFragment DefaultContent = ((b) => b.AddContent(1, "(( No content specified ))"));
+	private RenderFragment _Content = DefaultContent;
+	[Parameter]
+	public RenderFragment Content {
+		get { return _Content; }
+		set {
+			_Content = value ?? DefaultContent;
+		}
+	}
+
+	[Parameter]
+	public RenderFragment Buttons { get; set; }
+
+}

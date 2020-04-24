@@ -1,0 +1,11 @@
+﻿@page "/"
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+<Window Width="300" Title="@Configuration["SiteTitle"]">
+	<Content>This is my <b>Index Page!</b></Content>
+	<Buttons>
+		<button>Abort</button>
+		<button>Retry</button>
+		<button>Fail</button>
+	</Buttons>
+</Window>
